@@ -3,9 +3,10 @@ package guuilp.github.com.rvradiobutton
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.list_item.view.*
+import kotlinx.android.synthetic.main.people_list_item.view.*
 
-class PeopleAdapter(val people: List<Person>, private val listener: Listener) : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
+class PeopleAdapter(private val people: List<Person>, private val listener: Listener) :
+    RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     private var selectedPerson: Person? = null
 
@@ -18,7 +19,7 @@ class PeopleAdapter(val people: List<Person>, private val listener: Listener) : 
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(parent.inflate(R.layout.list_item))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(parent.inflate(R.layout.people_list_item))
 
     override fun getItemCount() = people.size
 

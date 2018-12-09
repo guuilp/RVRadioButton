@@ -5,11 +5,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_people.*
 
 class PeopleActivity : AppCompatActivity() {
 
-    private val listItems = listOf(
+    private val people = listOf(
         Person("Person 1", "Brazil"),
         Person("Person 2", "USA"),
         Person("Person 3", "Canada"),
@@ -22,14 +22,14 @@ class PeopleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_people)
         initComponents()
         observeChanges()
     }
 
     private fun initComponents() {
         viewModel = ViewModelProviders.of(this).get(PeopleViewModel::class.java)
-        adapter = PeopleAdapter(listItems, AdapterListener())
+        adapter = PeopleAdapter(people, AdapterListener())
         list.adapter = adapter
         button.setOnClickListener {
             viewModel.getSelectedPerson().value?.let { person ->
