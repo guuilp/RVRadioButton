@@ -18,7 +18,7 @@ class PeopleActivity : AppCompatActivity() {
     )
 
     private lateinit var viewModel: PeopleViewModel
-    private lateinit var adapter: Adapter
+    private lateinit var adapter: PeopleAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class PeopleActivity : AppCompatActivity() {
 
     private fun initComponents() {
         viewModel = ViewModelProviders.of(this).get(PeopleViewModel::class.java)
-        adapter = Adapter(listItems, AdapterListener())
+        adapter = PeopleAdapter(listItems, AdapterListener())
         list.adapter = adapter
         button.setOnClickListener {
             viewModel.getSelectedPerson().value?.let { person ->
@@ -44,7 +44,7 @@ class PeopleActivity : AppCompatActivity() {
         })
     }
 
-    private inner class AdapterListener : Adapter.Listener {
+    private inner class AdapterListener : PeopleAdapter.Listener {
         override fun onItemClicked(person: Person) {
             viewModel.setSelectedPerson(person)
         }

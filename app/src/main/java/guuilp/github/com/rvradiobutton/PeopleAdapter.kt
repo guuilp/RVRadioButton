@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class Adapter(val people: List<Person>, private val listener: Listener) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class PeopleAdapter(val people: List<Person>, private val listener: Listener) : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     private var selectedPerson = Person()
 
