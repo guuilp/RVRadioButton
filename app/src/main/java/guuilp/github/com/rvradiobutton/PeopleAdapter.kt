@@ -25,6 +25,8 @@ class PeopleAdapter(private val people: List<Person>, private val listener: List
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(people[position], listener)
 
+    override fun getItemId(position: Int) = people[position].id
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(person: Person, listener: Listener) = with(itemView) {
             name.text = person.name

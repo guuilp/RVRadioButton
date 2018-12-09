@@ -10,11 +10,11 @@ import kotlinx.android.synthetic.main.activity_people.*
 class PeopleActivity : AppCompatActivity() {
 
     private val people = listOf(
-        Person("Person 1", "Brazil"),
-        Person("Person 2", "USA"),
-        Person("Person 3", "Canada"),
-        Person("Person 4", "Russia"),
-        Person("Person 5", "Germany")
+        Person(1, "Person 1", "Brazil"),
+        Person(2, "Person 2", "USA"),
+        Person(3, "Person 3", "Canada"),
+        Person(4, "Person 4", "Russia"),
+        Person(5, "Person 5", "Germany")
     )
 
     private lateinit var viewModel: PeopleViewModel
@@ -30,6 +30,7 @@ class PeopleActivity : AppCompatActivity() {
     private fun initComponents() {
         viewModel = ViewModelProviders.of(this).get(PeopleViewModel::class.java)
         adapter = PeopleAdapter(people, AdapterListener())
+        adapter.setHasStableIds(true)
         list.adapter = adapter
         button.setOnClickListener {
             viewModel.getSelectedPerson().value?.let { person ->
