@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class PeopleAdapter(val people: List<Person>, private val listener: Listener) : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
-    private var selectedPerson = Person()
+    private var selectedPerson: Person? = null
 
     interface Listener {
         fun onItemClicked(person: Person)
